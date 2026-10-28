@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avista Beach Villas & Resort | Preventa de Lotes y Villas frente al Mar</title>
+  <meta name="description" content="Avista Beach Villas & Resort en Los Córdobas, Córdoba: lotes y villas frente al mar Caribe en preventa. Descanso, naturaleza y exclusividad. Agenda tu asesoría por WhatsApp." />
+  <link rel="icon" type="image/png" href="assets/favicon-avista.png" />
+  <link rel="apple-touch-icon" href="assets/favicon-avista.png" />
+  <link rel="preload" as="image" href="assets/logo-avista.png" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Sol poniente (logo de Avista)
+            sun: {
+              DEFAULT: '#E5B75A', // Base para CTA y acentos
+              dark:    '#C99A3E', // Final del degradado / hover
+              deep:    '#9A7428', // Texto dorado legible sobre fondo claro
+            },
+            // Atardecer y noche caribeña
+            dawn:  { 50: '#FFFDF9', 100: '#FDF3E7', 200: '#F7E5D4', 300: '#F1D5C2', 400: '#E8BFA8' },
+            night: { 700: '#1B263B', 800: '#1E2330', 900: '#0D1B2A' },
+            // RWAXI (brand board oficial)
+            rwaxi: { DEFAULT: '#24B8D7', blue: '#1453A0', purple: '#2F145F', gold: '#B77A1E', night: '#1A0B38' },
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans:  ['Poppins', 'sans-serif'],
+          },
+          boxShadow: {
+            glow:      '0 0 30px rgba(229, 183, 90, 0.45)',
+            'glow-lg': '0 0 50px rgba(229, 183, 90, 0.6)',
+            float:     '0 30px 60px -20px rgba(120, 72, 40, 0.35), 0 12px 24px -12px rgba(120, 72, 40, 0.2)',
+            soft:      '0 10px 30px -12px rgba(120, 72, 40, 0.18)',
+          },
+          keyframes: {
+            ring:    { '0%': { transform: 'scale(1)', opacity: '0.6' }, '100%': { transform: 'scale(1.7)', opacity: '0' } },
+            rise:    { '0%': { opacity: '0', transform: 'translateY(24px)', filter: 'blur(8px)', letterSpacing: '0.06em' },
+                       '100%': { opacity: '1', transform: 'none', filter: 'blur(0)', letterSpacing: '0' } },
+            fade:    { '0%': { opacity: '0', transform: 'translateY(12px)' }, '100%': { opacity: '1', transform: 'none' } },
+            shimmer: { '0%, 100%': { filter: 'drop-shadow(0 0 14px rgba(229,183,90,0.35))' },
+                       '50%':      { filter: 'drop-shadow(0 0 26px rgba(229,183,90,0.7))' } },
+            pulseNode: { '0%, 100%': { opacity: '0.25' }, '50%': { opacity: '0.6' } },
+            lotglow: { '0%, 100%': { boxShadow: '0 0 0 3px rgba(255,255,255,0.85), 0 0 18px rgba(229,183,90,0.6)' },
+                       '50%':      { boxShadow: '0 0 0 3px rgba(255,255,255,0.95), 0 0 34px rgba(229,183,90,0.95)' } },
+          },
+          animation: {
+            ring:    'ring 2s cubic-bezier(0,0,0.2,1) infinite',
+            rise:    'rise 1.4s cubic-bezier(0.22,1,0.36,1) both',
+            fade:    'fade 1s cubic-bezier(0.22,1,0.36,1) both',
+            shimmer: 'shimmer 4s ease-in-out infinite',
+            node:    'pulseNode 6s ease-in-out infinite',
+            lotglow: 'lotglow 1.6s ease-in-out infinite',
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      h1, h2, h3 { @apply font-serif tracking-[0.01em] text-slate-900; }
+    }
+    @layer components {
+      /* Botón principal: degradado del sol poniente con resplandor */
+      .btn-sun {
+        @apply inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-sun to-sun-dark font-semibold text-slate-900 shadow-glow
+               transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-glow-lg hover:brightness-105
+               focus:outline-none focus-visible:ring-4 focus-visible:ring-sun/50;
+      }
+      /* Botón translúcido sobre imagen */
+      .btn-glass {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 font-medium text-white backdrop-blur-md
+               transition-all duration-500 ease-out hover:border-white/70 hover:bg-white/20
+               focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40;
+      }
+      .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.35em] text-sun-deep sm:text-sm; }
+      /* Tarjeta cálida con filete dorado sutil */
+      .card-warm {
+        @apply rounded-3xl border border-sun/20 bg-white/70 shadow-soft backdrop-blur-sm
+               transition-all duration-500 ease-out hover:-translate-y-1 hover:border-sun/40 hover:shadow-float;
+      }
+      .nav-link { @apply rounded transition-colors duration-300 hover:text-sun focus:outline-none focus-visible:ring-2 focus-visible:ring-sun; }
+    }
+    /* Texto dorado con destello */
+    .text-sun-gradient {
+      background: linear-gradient(100deg, #F3D08A 0%, #E5B75A 45%, #C99A3E 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .icon-glow { filter: drop-shadow(0 0 6px rgba(229, 183, 90, 0.7)); }
+    /* Carrusel: fundido entre imágenes y acercamiento lento sobre la activa */
+    .carousel-slide { transition: opacity 1.2s ease-out, transform 7s ease-out; }
+
+    /* Aparición suave al hacer scroll */
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-dawn-50 font-sans text-slate-800 antialiased">
+
+  <!-- ================= 1. NAVBAR FLOTANTE ================= -->
+  <header id="navbar" class="fixed inset-x-0 top-0 z-40 bg-transparent transition-all duration-500">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+      <a href="#inicio" class="flex items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-sun" aria-label="Avista Beach Villas & Resort - Inicio">
+        <img id="nav-logo" src="assets/logo-avista-light.png" alt="Avista Beach Villas & Resort"
+             data-light="assets/logo-avista-light.png" data-dark="assets/logo-avista.png"
+             class="h-12 w-auto md:h-16" />
+      </a>
+
+      <ul data-nav-text class="hidden items-center gap-8 text-sm font-medium text-white transition-colors duration-500 md:flex">
+        <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+        <li><a href="#villas" class="nav-link">Villas</a></li>
+        <li><a href="#avances" class="nav-link">Avances</a></li>
+        <li><a href="#masterplan" class="nav-link">Master Plan</a></li>
+        <li><a href="#inversion" class="nav-link">Inversión</a></li>
+        <li>
+          <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Navbar · Contactar" aria-haspopup="dialog" class="btn-sun px-5 py-2.5 text-sm">Contactar</a>
+        </li>
+      </ul>
+
+      <!-- Botón menú móvil -->
+      <button id="menu-btn" data-nav-text class="rounded text-white transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sun md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden border-t border-sun/20 bg-dawn-50/95 px-4 pb-6 pt-2 shadow-lg backdrop-blur-md md:hidden">
+      <a href="#experiencia" class="block py-3 text-slate-800">Experiencia</a>
+      <a href="#villas" class="block py-3 text-slate-800">Villas</a>
+      <a href="#avances" class="block py-3 text-slate-800">Avances</a>
+      <a href="#masterplan" class="block py-3 text-slate-800">Master Plan</a>
+      <a href="#inversion" class="block py-3 text-slate-800">Inversión</a>
+      <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Menú móvil · Contactar" aria-haspopup="dialog" class="btn-sun mt-3 w-full py-3">Contactar</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= 2. HERO ================= -->
+    <section id="inicio" class="relative flex min-h-screen items-center justify-center overflow-hidden bg-night-900 bg-cover bg-center"
+             style="background-image: url('assets/render-aereo-avista.webp');">
+      <!-- Overlay: oscuro arriba (navbar) → cálido y desvanecido abajo -->
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/45 to-[#C9825A]/50" aria-hidden="true"></div>
+      <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#3A2418]/60 to-transparent" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.45)_0%,transparent_60%)]" aria-hidden="true"></div>
+      <!-- Sol poniente -->
+      <div class="pointer-events-none absolute -bottom-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-sun/30 blur-[120px]" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-5xl px-4 pt-24 text-center text-white sm:px-6">
+        <p class="mb-6 inline-block animate-fade rounded-full border border-sun/60 bg-white/10 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#F3D08A] sm:px-5 sm:text-[11px] sm:tracking-[0.35em] backdrop-blur-md">
+          Preventa exclusiva · Los Córdobas, Córdoba
+        </p>
+        <h1 class="animate-rise text-5xl font-semibold leading-[1.05] !text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] sm:text-6xl lg:text-8xl">
+          Tu Refugio de Paz
+          <span class="mt-2 block animate-shimmer italic text-sun-gradient">Frente al Mar</span>
+        </h1>
+        <p class="mx-auto mt-8 max-w-2xl animate-fade text-base font-light leading-relaxed text-white/90 [animation-delay:400ms] sm:text-xl">
+          Apaga el reloj. Aquí el día lo marcan la marea y el último rayo de sol sobre el Caribe.
+          Un retiro para respirar despacio, desconectarte por completo y volver a lo esencial.
+        </p>
+        <div class="mt-12 flex animate-fade flex-col items-center justify-center gap-4 [animation-delay:700ms] sm:flex-row">
+          <a href="#" data-wa="Hola, quiero separar mi lote en la preventa de Avista Beach Villas & Resort." data-origen="Hero · Reserva tu lote" aria-haspopup="dialog" class="btn-sun px-8 py-4 text-base sm:text-lg">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
+            Reserva tu lote por WhatsApp
+          </a>
+          <a href="#villas" class="btn-glass px-8 py-4">Conocer las villas</a>
+        </div>
+      </div>
+
+      <a href="#experiencia" class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/80" aria-label="Bajar a la siguiente sección">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </section>
+
+    <!-- ================= CINTA DE BENEFICIOS ================= -->
+    <section aria-label="Precios y financiación" class="relative bg-slate-900 text-white">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sun/70 to-transparent" aria-hidden="true"></div>
+      <div class="mx-auto grid max-w-7xl divide-y divide-sun/20 px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-center gap-3 py-5">
+          <svg class="icon-glow h-6 w-6 shrink-0 text-sun" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-map"/></svg>
+          <p class="text-sm tracking-wide">Lotes desde <span class="font-semibold text-sun">$155 Millones</span></p>
+        </div>
+        <div class="flex items-center justify-center gap-3 py-5">
+          <svg class="icon-glow h-6 w-6 shrink-0 text-sun" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-home"/></svg>
+          <p class="text-sm tracking-wide">Villas desde <span class="font-semibold text-sun">$480 Millones</span></p>
+        </div>
+        <div class="flex items-center justify-center gap-3 py-5">
+          <svg class="icon-glow h-6 w-6 shrink-0 text-sun" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-calendar"/></svg>
+          <p class="text-sm tracking-wide">Financiación flexible <span class="font-semibold text-sun">hasta 36 meses</span></p>
+        </div>
+      </div>
+      <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-sun/40 to-transparent" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= 3. EXPERIENCIA / ESTILO DE VIDA ================= -->
+    <section id="experiencia" class="relative overflow-hidden bg-gradient-to-b from-dawn-50 via-dawn-100 to-dawn-200 py-28 sm:py-32">
+      <!-- Cielo cálido de Los Córdobas -->
+      <div class="pointer-events-none absolute -top-32 right-[-10%] h-[30rem] w-[30rem] rounded-full bg-[#F6C9A0]/40 blur-[110px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute bottom-0 left-[-10%] h-[26rem] w-[26rem] rounded-full bg-[#F2B8B0]/25 blur-[110px]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl rounded-[2rem] border border-white/60 bg-white/40 px-6 py-12 text-center shadow-soft backdrop-blur-md sm:px-12">
+          <p class="eyebrow">Estilo de vida</p>
+          <h2 class="mt-4 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            Un nuevo pilar del turismo sostenible en el <span class="italic text-sun-deep">Caribe colombiano</span>
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-800/80">
+            Bajo el cielo de Los Córdobas, Avista nace para impulsar un turismo regional responsable: un destino pensado
+            para la desconexión total, que se integra con respeto al entorno natural y genera valor para la comunidad local.
+          </p>
+        </div>
+
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <article class="card-warm reveal p-8">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sun/20 to-sun/5 text-sun-dark">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-moon"/></svg>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold">Desconexión total</h3>
+            <p class="mt-3 leading-relaxed text-slate-800/75">
+              Un refugio caribeño lejos del ruido urbano, con noches estrelladas y un ritmo pausado que invita al descanso profundo.
+            </p>
+          </article>
+
+          <article class="card-warm reveal p-8 [transition-delay:120ms]">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sun/20 to-sun/5 text-sun-dark">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-leaf"/></svg>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold">Integración con el entorno</h3>
+            <p class="mt-3 leading-relaxed text-slate-800/75">
+              Construimos con baja intervención, conservando la vegetación nativa y los corredores naturales que dan vida al territorio.
+            </p>
+          </article>
+
+          <article class="card-warm reveal p-8 [transition-delay:240ms]">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sun/20 to-sun/5 text-sun-dark">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sunset"/></svg>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold">El Caribe como vecino</h3>
+            <p class="mt-3 leading-relaxed text-slate-800/75">
+              Brisa marina, atardeceres dorados y playas del Caribe colombiano para caminar sin horarios.
+            </p>
+          </article>
+
+          <article class="card-warm reveal p-8 [transition-delay:360ms]">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sun/20 to-sun/5 text-sun-dark">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sprout"/></svg>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold">Turismo sostenible</h3>
+            <p class="mt-3 leading-relaxed text-slate-800/75">
+              Arquitectura bioclimática, baja densidad y compromiso con la economía local para un destino que perdura en el tiempo.
+            </p>
+          </article>
+        </div>
+
+        <!-- Llegada: portería -->
+        <figure class="reveal group relative mt-16 overflow-hidden rounded-[2rem] shadow-float">
+          <img src="assets/render-porteria.webp" alt="Portería de Avista Beach con cubierta de palma y acceso controlado al atardecer"
+               class="aspect-[16/9] w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105 sm:aspect-[21/9]" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" aria-hidden="true"></div>
+          <figcaption class="absolute inset-x-0 bottom-0 p-6 text-white sm:p-10">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#F3D08A]">Tu llegada</p>
+            <p class="mt-2 max-w-xl font-serif text-2xl leading-snug sm:text-4xl">Portería con acceso controlado 24/7 y arquitectura de palma tradicional.</p>
+            <p class="mt-3 text-[11px] uppercase tracking-wider text-white/60">Render ilustrativo</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= 4. GALERÍA DE VILLAS ================= -->
+    <section id="villas" class="relative overflow-hidden bg-gradient-to-b from-dawn-200 via-[#F5DCCB] to-dawn-300 py-28 sm:py-32">
+      <div class="pointer-events-none absolute left-1/2 top-1/3 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-sun/15 blur-[140px]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-4xl text-center">
+          <p class="eyebrow">El lujo natural</p>
+          <h2 class="mt-4 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            Haz tuya una de nuestras villas de lujo desde
+            <span class="mt-2 block text-sun-gradient drop-shadow-[0_2px_12px_rgba(229,183,90,0.35)]">$480.000.000 COP</span>
+          </h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-800/75">
+            Arquitectura que respira con el entorno. Elige el modelo que mejor se adapta a tu estilo de vida; todos incluyen acabados premium y entrega llave en mano.
+          </p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-8">
+          <!-- Villa Palma -->
+          <article class="reveal group overflow-hidden rounded-[2rem] border border-white/70 bg-dawn-50/90 shadow-float transition-all duration-700 ease-out hover:-translate-y-2 hover:shadow-[0_45px_80px_-25px_rgba(120,72,40,0.45)]">
+            <div class="relative aspect-[4/3] overflow-hidden bg-dawn-300">
+              <img src="assets/villa-palma.webp" alt="Villa Palma: villa bioclimática con cubierta tradicional y piscina privada"
+                   class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#3A2418]/40 via-transparent to-transparent" aria-hidden="true"></div>
+              <span class="absolute bottom-4 right-4 rounded-full bg-slate-900/50 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white/90 backdrop-blur-sm">Render ilustrativo</span>
+              <span class="absolute left-5 top-5 rounded-full bg-gradient-to-r from-sun to-sun-dark px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-900 shadow-glow">Preventa</span>
+            </div>
+            <div class="p-8 sm:p-10 lg:p-8">
+              <h3 class="text-3xl font-semibold">Villa Palma</h3>
+              <p class="mt-2 text-sm font-medium text-slate-800/70">Desde <span class="font-serif text-lg font-semibold text-sun-deep">$480.000.000 COP</span></p>
+              <p class="mt-3 text-slate-800/75">Arquitectura bioclimática con cubierta tradicional que mantiene los espacios frescos de forma natural.</p>
+              <ul class="mt-7 grid gap-3 text-sm text-slate-800 sm:grid-cols-2 lg:grid-cols-1">
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bed"/></svg>2 Habitaciones</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-roof"/></svg>Diseño bioclimático con cubierta tradicional</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sunset"/></svg>Terraza panorámica</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-waves"/></svg>Piscina privada</li>
+                <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 120 m²</li>
+              </ul>
+              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Palma en Avista Beach Villas & Resort." data-origen="Villa Palma · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+                Ver detalles
+                <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Villa Coral -->
+          <article class="reveal group overflow-hidden rounded-[2rem] border border-white/70 bg-dawn-50/90 shadow-float transition-all duration-700 ease-out [transition-delay:150ms] hover:-translate-y-2 hover:shadow-[0_45px_80px_-25px_rgba(120,72,40,0.45)] lg:mt-12">
+            <div class="relative aspect-[4/3] overflow-hidden bg-dawn-300">
+              <img src="assets/villa-coral.webp" alt="Villa Coral: villa con balcón e integración interior-exterior frente al mar"
+                   class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#3A2418]/40 via-transparent to-transparent" aria-hidden="true"></div>
+              <span class="absolute bottom-4 right-4 rounded-full bg-slate-900/50 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white/90 backdrop-blur-sm">Render ilustrativo</span>
+              <span class="absolute left-5 top-5 rounded-full bg-slate-900/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-sun backdrop-blur-sm">Vista al mar</span>
+            </div>
+            <div class="p-8 sm:p-10 lg:p-8">
+              <h3 class="text-3xl font-semibold">Villa Coral</h3>
+              <p class="mt-2 text-sm font-medium text-slate-800/70">Desde <span class="font-serif text-lg font-semibold text-sun-deep">$750.000.000 COP</span></p>
+              <p class="mt-3 text-slate-800/75">Espacios que fluyen del interior al exterior, con balcón frente al mar y conexión directa con la naturaleza.</p>
+              <ul class="mt-7 grid gap-3 text-sm text-slate-800 sm:grid-cols-2 lg:grid-cols-1">
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bed"/></svg>3 Habitaciones</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-waves"/></svg>Balcón con vista al mar</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-door"/></svg>Integración interior-exterior</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-leaf"/></svg>Acceso directo a senderos</li>
+                <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 210 m²</li>
+              </ul>
+              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Coral en Avista Beach Villas & Resort." data-origen="Villa Coral · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+                Ver detalles
+                <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Villa Arena -->
+          <article class="reveal group overflow-hidden rounded-[2rem] border border-white/70 bg-dawn-50/90 shadow-float transition-all duration-700 ease-out [transition-delay:300ms] hover:-translate-y-2 hover:shadow-[0_45px_80px_-25px_rgba(120,72,40,0.45)]">
+            <div class="relative aspect-[4/3] overflow-hidden bg-dawn-300">
+              <img src="assets/villa-arena.webp" alt="Villa Arena: villa de concepto abierto con piscina privada abierta a la brisa marina"
+                   class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#3A2418]/40 via-transparent to-transparent" aria-hidden="true"></div>
+              <span class="absolute bottom-4 right-4 rounded-full bg-slate-900/50 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white/90 backdrop-blur-sm">Render ilustrativo</span>
+              <span class="absolute left-5 top-5 rounded-full bg-white/85 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-800 backdrop-blur-sm">Concepto abierto</span>
+            </div>
+            <div class="p-8 sm:p-10 lg:p-8">
+              <h3 class="text-3xl font-semibold">Villa Arena</h3>
+              <p class="mt-2 text-sm font-medium text-slate-800/70">Desde <span class="font-serif text-lg font-semibold text-sun-deep">$675.000.000 COP</span></p>
+              <p class="mt-3 text-slate-800/75">Espacios amplios y sin barreras que dejan correr la brisa del mar por toda la casa.</p>
+              <ul class="mt-7 grid gap-3 text-sm text-slate-800 sm:grid-cols-2 lg:grid-cols-1">
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bed"/></svg>2 Habitaciones</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-open"/></svg>Diseño de concepto abierto</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-waves"/></svg>Piscina privada</li>
+                <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wind"/></svg>Integración total con la brisa marina</li>
+                <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 180 m²</li>
+              </ul>
+              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Arena en Avista Beach Villas & Resort." data-origen="Villa Arena · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+                Ver detalles
+                <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LA REALIDAD DE TU RETIRO (avances reales) ================= -->
+    <section id="avances" class="relative overflow-hidden bg-gradient-to-b from-dawn-300 via-[#F6E3D4] to-dawn-300 py-28 sm:py-32">
+      <div class="pointer-events-none absolute -left-24 top-1/4 h-[26rem] w-[26rem] rounded-full bg-sun/10 blur-[120px]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="eyebrow">La realidad de tu retiro</p>
+          <h2 class="mt-4 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">Más que un sueño, una realidad en construcción</h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-800/75">
+            Avista Beach ya respira. Conoce los avances de obra, la majestuosidad de nuestro frente de playa y la primera villa tradicional terminada.
+          </p>
+        </div>
+
+        <!-- Collage de fotos reales del predio -->
+        <div class="mt-16 grid grid-flow-dense auto-rows-[170px] grid-cols-2 gap-4 sm:auto-rows-[220px] md:grid-cols-4 md:gap-5">
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft col-span-2 row-span-2">
+            <img src="assets/avance-aereo-lote.webp" alt="Vista aérea del lote de Avista Beach con la laguna, la vía interna y el mar Caribe al fondo"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Lote, laguna y mar Caribe</figcaption>
+          </figure>
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft col-span-2 [transition-delay:100ms]">
+            <img src="assets/avance-dron-frente-playa.webp" alt="Toma de dron del frente de playa con la vía interna trazada y la villa tradicional existente"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Vía interna en obra</figcaption>
+          </figure>
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft row-span-2 [transition-delay:200ms]">
+            <img src="assets/fauna-perezoso.webp" alt="Perezoso en un árbol del predio, con la villa tradicional al fondo"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Fauna nativa: nuestros vecinos</figcaption>
+          </figure>
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft  [transition-delay:300ms]">
+            <img src="assets/villa-tradicional-hamacas.webp" alt="Primera villa tradicional terminada, con cubierta de palma y hamacas en el corredor"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Primera villa terminada</figcaption>
+          </figure>
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft col-span-2">
+            <img src="assets/avance-dron-playa-obra.webp" alt="Vista desde el mar del frente de playa, la villa tradicional y la vivienda en construcción"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Frente de playa y obra en curso</figcaption>
+          </figure>
+          <figure class="reveal group relative overflow-hidden rounded-xl bg-dawn-400/40 shadow-soft  [transition-delay:100ms]">
+            <img src="assets/avance-dron-laguna.webp" alt="Vista de dron desde la laguna hacia el mar, con la villa tradicional y los trazos de la vía"
+                 class="h-full w-full object-cover transition duration-[1500ms] ease-out group-hover:scale-105" loading="lazy" />
+            <figcaption class="absolute bottom-3 left-3 rounded-full bg-slate-900/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">Desde la laguna hasta el mar</figcaption>
+          </figure>
+        </div>
+
+        <div class="reveal mt-12 text-center">
+          <a href="#" data-wa="Hola, quiero agendar una visita para conocer los avances de obra de Avista Beach Villas & Resort." data-origen="Avances · Agenda una visita" aria-haspopup="dialog" class="btn-sun px-8 py-3.5 text-sm sm:text-base">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
+            Agenda una visita al proyecto
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. MASTER PLAN INTERACTIVO ================= -->
+    <section id="masterplan" class="relative overflow-hidden bg-gradient-to-b from-dawn-300 via-dawn-400/70 to-dawn-300 pb-40 pt-28 sm:pt-32">
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="eyebrow">Master Plan</p>
+          <h2 class="mt-4 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">Elige tu lote ideal</h2>
+          <p class="mt-6 text-lg text-slate-800/75">
+            Etapa I: 23 lotes de 405 a 1.404 m² entre el mar Caribe y la laguna, sobre un predio de 1,5 hectáreas. Explóralos uno a uno sobre el plano oficial.
+          </p>
+          <p class="mx-auto mt-8 max-w-xl rounded-2xl border border-sun/40 bg-white/50 px-6 py-5 text-slate-800 shadow-soft backdrop-blur-sm">
+            Lotes disponibles desde <strong class="text-sun-deep">$155.000.000 COP</strong>.
+            Diseña tu retiro a tu medida con modelos flexibles de financiamiento de <strong>hasta 36 meses</strong>.
+          </p>
+        </div>
+
+        <!-- Plano interactivo de 23 lotes sobre el plano urbanístico oficial (marcadores generados en JS) -->
+        <div id="masterplan-scroll" class="reveal mt-14 overflow-x-auto rounded-[2rem] border border-white/70 bg-[#F3EEE2] shadow-float">
+          <div id="masterplan-map" class="relative w-full min-w-[760px] aspect-[2000/1415]">
+            <img src="assets/masterplan-avista-etapa1.webp"
+                 alt="Plano urbanístico de Avista Beach Etapa I: 23 lotes entre el mar Caribe y la laguna, con vía interna y acceso principal"
+                 class="absolute inset-0 h-full w-full select-none" draggable="false" />
+
+            <!-- Tooltip compartido -->
+            <div id="lot-tooltip" role="tooltip"
+                 class="pointer-events-none absolute z-30 -translate-x-1/2 whitespace-nowrap rounded-xl border border-sun/30 bg-night-900/95 px-4 py-2.5 text-center text-xs text-white opacity-0 shadow-glow backdrop-blur transition-opacity duration-200">
+              <p data-lot-name class="font-serif text-sm font-semibold"></p>
+              <p data-lot-area class="mt-0.5 text-white/70"></p>
+              <p data-lot-status class="mt-0.5 tracking-wide"></p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-xs text-slate-800/60 sm:hidden">Desliza horizontalmente para recorrer el plano.</p>
+
+        <!-- Leyenda de lotes (conteos generados en JS) -->
+        <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-800">
+          <span class="flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-gradient-to-br from-sun to-sun-dark shadow-glow"></span>Lote disponible <span data-count="Lote disponible" class="text-slate-800/50"></span></span>
+          <span class="flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-[#2A8C82]"></span>Lote con casa <span data-count="Lote con casa" class="text-slate-800/50"></span></span>
+          <span class="flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-slate-500"></span>No disponible <span data-count="No disponible" class="text-slate-800/50"></span></span>
+        </div>
+        <p class="mt-3 text-center text-xs text-slate-800/60">Haz clic en un lote disponible para solicitar información por WhatsApp.
+          <a href="assets/masterplan-avista-etapa1.webp" target="_blank" rel="noopener" class="ml-1 font-medium text-sun-deep underline underline-offset-2 hover:text-slate-900">Ver plano completo</a></p>
+      </div>
+
+      <!-- Transición del atardecer a la noche -->
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#5B4470]/45 to-rwaxi-night" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= 6. INVERSIÓN TOKENIZADA (RWAXI) ================= -->
+    <section id="inversion" class="relative overflow-hidden bg-gradient-to-br from-rwaxi-night via-rwaxi-purple to-[#0B2347] py-28 text-white sm:py-36">
+      <!-- Red blockchain: nodos interconectados -->
+      <svg class="pointer-events-none absolute inset-0 h-full w-full opacity-20" aria-hidden="true">
+        <defs>
+          <pattern id="chain-net" width="220" height="180" patternUnits="userSpaceOnUse">
+            <g stroke="#24B8D7" stroke-width="1" fill="none">
+              <path d="M20 30 L110 15 L190 60 L150 140 L60 120 Z"/>
+              <path d="M20 30 L60 120 M110 15 L150 140 M110 15 L60 120 M190 60 L60 120"/>
+              <path d="M190 60 L240 40 M150 140 L170 200 M60 120 L0 160 M20 30 L-20 10"/>
+            </g>
+            <g fill="#1A0B38" stroke="#24B8D7" stroke-width="1.5">
+              <rect x="14" y="24" width="12" height="12" rx="2"/>
+              <rect x="104" y="9" width="12" height="12" rx="2"/>
+              <rect x="184" y="54" width="12" height="12" rx="2"/>
+              <rect x="144" y="134" width="12" height="12" rx="2"/>
+              <rect x="54" y="114" width="12" height="12" rx="2"/>
+            </g>
+            <g fill="#B77A1E"><circle cx="65" cy="22" r="2.5"/><circle cx="150" cy="38" r="2.5"/><circle cx="105" cy="130" r="2.5"/><circle cx="40" cy="75" r="2.5"/></g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#chain-net)"/>
+      </svg>
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#1A0B38_90%)]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 top-0 h-96 w-96 animate-node rounded-full bg-rwaxi/20 blur-[120px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -right-20 bottom-0 h-[28rem] w-[28rem] animate-node rounded-full bg-rwaxi-blue/40 blur-[120px] [animation-delay:3s]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div class="reveal text-center lg:text-left">
+        <!-- Logo oficial sobre fondo limpio (manual de marca: no recolorear ni añadir efectos) -->
+        <div class="inline-flex rounded-2xl bg-white px-5 py-3 shadow-[0_12px_40px_-8px_rgba(36,184,215,0.35)]">
+          <img src="assets/logo-rwaxi.png" alt="RWAXI · Activos reales, inversiones digitales" class="h-16 w-auto sm:h-20" loading="lazy" />
+        </div>
+        <p class="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-rwaxi">Tecnología blockchain · RWAXI Real Estate</p>
+        <h2 class="mt-3 text-4xl font-semibold leading-tight !text-white sm:text-5xl lg:text-6xl">
+          Inversión Tokenizada con <span class="text-rwaxi">RWAXI</span>
+        </h2>
+        <p class="mx-auto mt-7 max-w-2xl lg:mx-0 text-lg leading-relaxed text-white/75 sm:text-xl">
+          Sé copropietario del edificio principal del resort mediante nuestro modelo de tokenización inmobiliaria.
+          Participaciones seguras y respaldadas desde
+        </p>
+        <p class="mt-4 font-serif text-5xl font-semibold text-white drop-shadow-[0_0_24px_rgba(36,184,215,0.45)] sm:text-6xl">$75.000.000 COP</p>
+
+        <div class="mt-12 flex flex-col items-center gap-4 lg:items-start">
+          <a href="https://www.rwaxirealestate.com" target="_blank" rel="noopener noreferrer" class="btn-sun px-9 py-4 text-base shadow-glow-lg sm:text-lg">
+            Visitar RWAXI Real Estate
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+          </a>
+          <p class="text-xs text-white/45">Sujeto a condiciones y documentación legal del proyecto.</p>
+        </div>
+        </div>
+
+        <!-- Edificio principal (activo tokenizado): carrusel de renders -->
+        <figure id="edificio-carousel" class="reveal relative [transition-delay:150ms]" aria-roledescription="carrusel" aria-label="Renders del edificio principal del resort">
+          <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-rwaxi/30 via-transparent to-rwaxi-blue/30 blur-xl" aria-hidden="true"></div>
+          <div class="relative overflow-hidden rounded-[1.75rem] border border-rwaxi/30 shadow-[0_0_40px_rgba(36,184,215,0.2)]">
+            <div class="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-white py-1.5 pl-1.5 pr-4 shadow-lg">
+              <img src="assets/isotipo-rwaxi.png" alt="" class="h-8 w-8 object-contain" />
+              <span class="text-xs font-semibold text-rwaxi-purple">Activo tokenizado</span>
+            </div>
+
+            <div class="relative aspect-[4/3] w-full sm:aspect-[16/10]">
+              <img data-slide data-caption="Vista desde la laguna" src="assets/render-edificio-principal.webp"
+                   alt="Render del edificio principal de Avista Beach frente a la laguna al atardecer"
+                   class="carousel-slide absolute inset-0 h-full w-full object-cover opacity-100" />
+              <img data-slide data-caption="Fachada con vista al mar" src="assets/render-edificio-fachada-mar.webp"
+                   alt="Render de la fachada del edificio principal con balcones y el mar Caribe al atardecer"
+                   class="carousel-slide absolute inset-0 h-full w-full object-cover opacity-0" loading="lazy" />
+            </div>
+
+            <figcaption class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-slate-900/90 to-transparent px-5 pb-4 pt-12 text-xs">
+              <span>
+                <span data-slide-caption class="block font-medium text-white" aria-live="polite">Vista desde la laguna</span>
+                <span class="mt-0.5 block uppercase tracking-wider text-white/50">Render ilustrativo</span>
+              </span>
+              <span class="flex items-center gap-2" role="group" aria-label="Elegir imagen">
+                <button type="button" data-dot="0" aria-label="Ver vista desde la laguna" aria-current="true"
+                        class="h-2 w-6 rounded-full bg-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rwaxi"></button>
+                <button type="button" data-dot="1" aria-label="Ver fachada con vista al mar"
+                        class="h-2 w-2 rounded-full bg-white/50 transition-all duration-500 hover:bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-rwaxi"></button>
+              </span>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 7. FOOTER INSTITUCIONAL ================= -->
+  <footer class="relative bg-night-900 text-white/60">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sun/40 to-transparent" aria-hidden="true"></div>
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-12 md:grid-cols-3">
+        <!-- Marca del proyecto -->
+        <div class="text-center md:text-left">
+          <img src="assets/logo-avista-light.png" alt="Avista Beach Villas & Resort" class="mx-auto h-20 w-auto md:mx-0" loading="lazy" />
+          <p class="mt-4 text-sm leading-relaxed">Tu refugio de paz frente al mar Caribe. Lotes y villas en preventa en Los Córdobas, Córdoba.</p>
+        </div>
+
+        <!-- Constructora (respaldo) -->
+        <div class="text-center">
+          <p class="text-xs font-medium uppercase tracking-[0.3em] text-sun">Un proyecto desarrollado por:</p>
+          <div class="mx-auto mt-5 inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 shadow-glow">
+            <img src="assets/logo-constructora-inversiones-morales.png" alt="Constructora Inversiones Morales" class="h-28 w-auto max-w-[240px] object-contain" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Navegación y contacto -->
+        <nav class="text-center md:text-right" aria-label="Navegación del pie de página">
+          <ul class="space-y-2 text-sm">
+            <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+            <li><a href="#villas" class="nav-link">Villas</a></li>
+            <li><a href="#avances" class="nav-link">Avances</a></li>
+            <li><a href="#masterplan" class="nav-link">Master Plan</a></li>
+            <li><a href="#inversion" class="nav-link">Inversión</a></li>
+          </ul>
+          <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Footer · Hablar con un asesor" aria-haspopup="dialog" class="btn-sun mt-6 px-6 py-2.5 text-sm">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
+            Hablar con un asesor
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 py-6 text-center text-xs text-white/40">
+      © <span id="year"></span> Avista Beach Villas &amp; Resort. Todos los derechos reservados. Imágenes de referencia sujetas a cambios.
+      <nav aria-label="Documentos legales" class="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
+        <a href="#" data-legal="terminos" class="nav-link underline-offset-2 hover:underline">Términos y Condiciones</a>
+        <a href="#" data-legal="datos" class="nav-link underline-offset-2 hover:underline">Política de Tratamiento de Datos</a>
+        <a href="#" data-legal="cookies" class="nav-link underline-offset-2 hover:underline">Política de Cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ================= BANNER DE COOKIES ================= -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-50 bg-slate-900 text-white hidden" role="region" aria-label="Aviso de cookies">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sun/60 to-transparent" aria-hidden="true"></div>
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <p class="max-w-3xl text-sm leading-relaxed text-white/80">
+        Usamos cookies y almacenamiento local para recordar tus preferencias y mejorar tu experiencia en el sitio.
+        Consulta nuestra <a href="#" data-legal="cookies" class="font-medium text-sun underline underline-offset-2 hover:text-white">Política de Cookies</a>.
+      </p>
+      <button type="button" id="cookie-accept" class="btn-sun shrink-0 px-6 py-2.5 text-sm">Aceptar Cookies</button>
+    </div>
+  </div>
+
+  <!-- ================= MODAL DE CONSENTIMIENTO (antes de WhatsApp) ================= -->
+  <div id="consent-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 hidden p-4 backdrop-blur-sm"
+       role="dialog" aria-modal="true" aria-labelledby="consent-title" aria-describedby="consent-desc">
+    <div class="relative max-h-[calc(100vh-2rem)] w-full max-w-lg overflow-y-auto rounded-[2rem] border border-sun/30 bg-dawn-50 p-6 shadow-float sm:p-9">
+      <button type="button" data-consent-close aria-label="Cerrar"
+              class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full text-slate-800/60 transition hover:bg-slate-900/5 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sun">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+
+      <img src="assets/logo-avista.png" alt="Avista Beach Villas & Resort" class="h-14 w-auto" />
+      <h2 id="consent-title" class="mt-5 text-2xl font-semibold leading-tight sm:text-3xl">Antes de continuar a WhatsApp</h2>
+      <p id="consent-desc" class="mt-2 text-sm leading-relaxed text-slate-800/75">
+        Para atender tu consulta necesitamos tu nombre y tu autorización para el tratamiento de tus datos personales,
+        conforme a la Ley 1581 de 2012 (Habeas Data).
+      </p>
+      <p class="mt-4 inline-flex flex-wrap gap-1 rounded-full bg-sun/15 px-3 py-1 text-xs font-medium text-sun-deep">
+        Consulta sobre: <span data-consent-origen></span>
+      </p>
+
+      <form id="consent-form" class="mt-6 space-y-5" novalidate>
+        <div>
+          <label for="consent-nombre" class="block text-sm font-medium text-slate-900">Nombre completo <span class="text-sun-deep" aria-hidden="true">*</span></label>
+          <input id="consent-nombre" name="nombre" type="text" required minlength="3" autocomplete="name" placeholder="Ej. María Fernanda Gómez"
+                 class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-sun focus:outline-none focus:ring-2 focus:ring-sun/40" />
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Autorizaciones obligatorias</legend>
+          <label for="consent-terminos" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
+            <input id="consent-terminos" name="acepta_terminos" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
+            <span>Acepto los <a href="#" data-legal="terminos" target="_blank" rel="noopener" class="text-blue-600 underline">Términos y Condiciones</a>.</span>
+          </label>
+          <label for="consent-datos" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
+            <input id="consent-datos" name="acepta_datos" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
+            <span>Acepto la <a href="#" data-legal="datos" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Tratamiento de Datos</a>.</span>
+          </label>
+          <label for="consent-cookies" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
+            <input id="consent-cookies" name="acepta_cookies" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
+            <span>Acepto la <a href="#" data-legal="cookies" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Cookies</a>.</span>
+          </label>
+        </fieldset>
+
+        <button type="submit" id="consent-submit" disabled
+                class="btn-sun w-full px-6 py-4 text-base disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-y-0 disabled:hover:brightness-100">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
+          Aceptar y Continuar a WhatsApp
+        </button>
+        <p class="text-center text-xs text-slate-800/60">Todos los campos son obligatorios.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= BOTÓN FLOTANTE WHATSAPP ================= -->
+  <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Botón flotante WhatsApp" aria-haspopup="dialog" id="wa-float" aria-label="Escríbenos por WhatsApp"
+     class="fixed bottom-4 right-4 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/30 transition hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40">
+    <span class="absolute inset-0 animate-ring rounded-full bg-[#25D366]" aria-hidden="true"></span>
+    <svg class="relative h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
+  </a>
+
+  <!-- Sprite de iconos (lineales) -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+    <symbol id="icon-wa" viewBox="0 0 24 24">
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.41 9.41 0 0 1 2.77 6.7c0 5.22-4.25 9.47-9.47 9.47zm8.06-17.53A11.33 11.33 0 0 0 12.05.63C5.77.63.66 5.74.66 12.02c0 2.01.52 3.97 1.52 5.69L.57 23.6l6.04-1.58a11.37 11.37 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.34-8.05z"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-6-2V4l6 2m0 14 6-2m-6 2V6m6 12 6 2V6l-6-2m0 14V4M9 6l6-2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path stroke-linecap="round" d="M3 10h18M8 3v4m8-4v4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path stroke-linecap="round" d="M17 3v2m-1-1h2M20.5 7.5v1.5m-.75-.75h1.5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path stroke-linecap="round" d="M5 19l8-8"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 15a5 5 0 0 1 10 0M12 4v3M4.9 8.9l1.4 1.4M19.1 8.9l-1.4 1.4M2 15h2m16 0h2M3 19c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-9m0 0C12 8 9.5 5.5 5 5.5 5 10 7.5 12 12 12zm0 0c0-3.5 2.5-6 7-6 0 4.5-2.5 6-7 6zM7 21h10"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 18V7m0 7h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5a1.5 1.5 0 1 0 0-.01"/></symbol>
+    <symbol id="i-roof" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12 12 4l10 8M5 10.5V20h14v-9.5M9 20v-4h6v4"/><path stroke-linecap="round" d="M7 8.5l3 3M11 6l3 3"/></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 9c2 0 2-1.5 4-1.5S8 9 10 9s2-1.5 4-1.5S16 9 18 9s2-1.5 4-1.5M2 14c2 0 2-1.5 4-1.5S8 14 10 14s2-1.5 4-1.5S16 14 18 14s2-1.5 4-1.5M2 19c2 0 2-1.5 4-1.5S8 19 10 19s2-1.5 4-1.5S16 19 18 19s2-1.5 4-1.5"/></symbol>
+    <symbol id="i-area" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6M4 4v6M20 20h-6M20 20v-6M4 4l16 16"/></symbol>
+    <symbol id="i-open" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21V4h9v17M13 6l7 2v13M2 21h20M10 12.5v.5"/></symbol>
+  </svg>
+
+  <script>
+    // ===== Configuración =====
+    // Reemplaza por el número real en formato internacional, sin "+" ni espacios (ej. 573001234567).
+    const WHATSAPP_NUMBER = "573018048806";
+
+    // Webhook de Make/Zapier donde se registran los consentimientos. Vacío = no se envía nada.
+    const WEBHOOK_URL = "";
+    // Documentos legales y versión vigente (se registra con cada consentimiento)
+    const LEGAL_LINKS = { terminos: 'terminos.html', datos: 'datos.html', cookies: 'cookies.html' };
+    const POLICY_VERSION = 'v1.0-Oct2026';
+
+    const waLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    // localStorage puede no estar disponible (modo privado, bloqueo de datos)
+    const storage = {
+      get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+      set(key, value) { try { localStorage.setItem(key, value); } catch { /* sin almacenamiento */ } },
+    };
+
+    // ===== Enlaces legales =====
+    document.querySelectorAll('[data-legal]').forEach((link) => {
+      const url = LEGAL_LINKS[link.dataset.legal] || '#';
+      link.href = url;
+      // Mientras el documento no exista, el enlace no salta al inicio de la página
+      if (url === '#') link.addEventListener('click', (e) => e.preventDefault());
+    });
+
+    // ===== Banner de cookies =====
+    const COOKIE_KEY = 'avista_cookies_aceptadas';
+    const cookieBanner = document.getElementById('cookie-banner');
+    const waFloat = document.getElementById('wa-float');
+
+    // Mientras el banner está visible, el botón flotante sube por encima de él;
+    // en móvil se oculta para no tapar el contenido (el banner ocupa más alto)
+    function placeFloatButton() {
+      const visible = !cookieBanner.classList.contains('hidden');
+      const narrow = window.matchMedia('(max-width: 639px)').matches;
+      waFloat.style.bottom = visible && !narrow ? `${cookieBanner.offsetHeight + 16}px` : '';
+      waFloat.classList.toggle('hidden', visible && narrow);
+    }
+    if (!storage.get(COOKIE_KEY)) cookieBanner.classList.remove('hidden');
+    placeFloatButton();
+    window.addEventListener('resize', placeFloatButton);
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+      storage.set(COOKIE_KEY, new Date().toISOString());
+      cookieBanner.classList.add('hidden');
+      placeFloatButton();
+    });
+
+    // ===== Modal de consentimiento antes de WhatsApp =====
+    const consentModal = document.getElementById('consent-modal');
+    const consentForm = document.getElementById('consent-form');
+    const consentName = document.getElementById('consent-nombre');
+    const consentChecks = [...consentForm.querySelectorAll('input[type="checkbox"]')];
+    const consentSubmit = document.getElementById('consent-submit');
+    const consentOrigen = consentModal.querySelector('[data-consent-origen]');
+    let pendingChat = null;   // { mensaje, origen } del botón que abrió el modal
+    let lastTrigger = null;
+
+    const consentIsValid = () => consentName.value.trim().length >= 3 && consentChecks.every((c) => c.checked);
+    const updateConsentSubmit = () => { consentSubmit.disabled = !consentIsValid(); };
+
+    function openConsent(mensaje, origen, trigger) {
+      pendingChat = { mensaje, origen };
+      lastTrigger = trigger || null;
+      consentOrigen.textContent = origen;
+      updateConsentSubmit();
+      consentModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      consentName.focus();
+    }
+    function closeConsent() {
+      consentModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      pendingChat = null;
+      lastTrigger?.focus();
+    }
+
+    function registrarConsentimiento(payload) {
+      if (!WEBHOOK_URL) {
+        console.info('WEBHOOK_URL vacío: consentimiento no enviado', payload);
+        return;
+      }
+      // Formulario codificado (petición simple, sin preflight CORS): Make y Zapier lo leen campo a campo
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: new URLSearchParams(Object.entries(payload).map(([k, v]) => [k, String(v)])),
+        keepalive: true,
+      }).catch((err) => console.error('No se pudo registrar el consentimiento', err));
+    }
+
+    consentForm.addEventListener('input', updateConsentSubmit);
+    consentForm.addEventListener('change', updateConsentSubmit);
+    consentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!consentIsValid() || !pendingChat) return;
+
+      registrarConsentimiento({
+        nombre: consentName.value.trim(),
+        acepta_terminos: true,
+        acepta_datos: true,
+        acepta_cookies: true,
+        fecha_hora: new Date().toISOString(),
+        lote_o_origen: pendingChat.origen,
+        version_politicas: POLICY_VERSION,
+      });
+
+      const url = waLink(pendingChat.mensaje);
+      const chat = window.open(url, '_blank');
+      if (chat) chat.opener = null;
+      else window.location.href = url; // ventana emergente bloqueada: abrir en la misma pestaña
+
+      consentForm.reset();
+      closeConsent();
+    });
+
+    consentModal.querySelector('[data-consent-close]').addEventListener('click', closeConsent);
+    consentModal.addEventListener('click', (e) => { if (e.target === consentModal) closeConsent(); });
+    consentModal.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeConsent(); return; }
+      if (e.key !== 'Tab') return;
+      // Mantener el foco dentro del modal
+      const focusables = [...consentModal.querySelectorAll('a[href], button:not([disabled]), input')];
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    // Enlace entrante desde las páginas legales: index.html#contacto abre el modal
+    function openFromContactHash() {
+      if (location.hash !== '#contacto') return;
+      history.replaceState(null, '', location.pathname + location.search);
+      openConsent('Hola, quiero información sobre la preventa de Avista Beach Villas & Resort.', 'Páginas legales · Hablar con un asesor');
+    }
+    openFromContactHash();
+    window.addEventListener('hashchange', openFromContactHash);
+
+    // Todos los CTA de WhatsApp pasan por el modal
+    document.querySelectorAll('[data-wa]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openConsent(el.dataset.wa, el.dataset.origen, el);
+      });
+    });
+
+    // ===== Navbar: transparente -> sólido con el scroll =====
+    const navbar = document.getElementById('navbar');
+    const navLogo = document.getElementById('nav-logo');
+    const navTexts = document.querySelectorAll('[data-nav-text]');
+
+    function updateNavbar() {
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('bg-transparent', !scrolled);
+      navbar.classList.toggle('bg-dawn-50/85', scrolled);
+      navbar.classList.toggle('backdrop-blur-md', scrolled);
+      navbar.classList.toggle('shadow-soft', scrolled);
+      // Versión clara del logo sobre el hero, versión original sobre el navbar sólido
+      const logoSrc = scrolled ? navLogo.dataset.dark : navLogo.dataset.light;
+      if (navLogo.getAttribute('src') !== logoSrc) navLogo.setAttribute('src', logoSrc);
+      navTexts.forEach((el) => {
+        el.classList.toggle('text-white', !scrolled);
+        el.classList.toggle('text-slate-800', scrolled);
+      });
+    }
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    // ===== Menú móvil =====
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const open = !mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      })
+    );
+
+    // ===== Aparición suave al hacer scroll =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    // ===== Carrusel del edificio principal =====
+    (() => {
+      const root = document.getElementById('edificio-carousel');
+      const slides = [...root.querySelectorAll('[data-slide]')];
+      const dots = [...root.querySelectorAll('[data-dot]')];
+      const caption = root.querySelector('[data-slide-caption]');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const INTERVAL = 5500;
+      let current = 0;
+      let timer = null;
+
+      function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((img, i) => {
+          const active = i === current;
+          img.classList.toggle('opacity-100', active);
+          img.classList.toggle('opacity-0', !active);
+          // Acercamiento lento sobre la imagen activa
+          img.classList.toggle('scale-105', active && !reduceMotion);
+          img.setAttribute('aria-hidden', String(!active));
+        });
+        dots.forEach((dot, i) => {
+          const active = i === current;
+          dot.classList.toggle('w-6', active);
+          dot.classList.toggle('bg-white', active);
+          dot.classList.toggle('w-2', !active);
+          dot.classList.toggle('bg-white/50', !active);
+          if (active) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current');
+        });
+        caption.textContent = slides[current].dataset.caption;
+      }
+      const start = () => { if (!reduceMotion && !timer) timer = setInterval(() => show(current + 1), INTERVAL); };
+      const stop = () => { clearInterval(timer); timer = null; };
+
+      dots.forEach((dot) => dot.addEventListener('click', () => { show(Number(dot.dataset.dot)); stop(); start(); }));
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop);
+      root.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+      show(0);
+      start();
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Master Plan interactivo: 21 lotes =====
+    const map = document.getElementById('masterplan-map');
+    const tooltip = document.getElementById('lot-tooltip');
+
+    const LOT_STATUS = {
+      'Lote disponible': { classes: 'bg-gradient-to-br from-sun to-sun-dark text-slate-900 border-white shadow-glow cursor-pointer hover:brightness-110', color: '#E5B75A', available: true },
+      'Lote con casa':   { classes: 'bg-[#2A8C82] text-white border-white shadow-[0_0_24px_rgba(42,140,130,0.55)] cursor-pointer hover:brightness-110', color: '#5FD0C4', available: true },
+      'No disponible': { classes: 'bg-slate-500/90 text-white/80 border-white/70 cursor-not-allowed', color: '#CBD5E1' },
+    };
+
+    // Disponibilidad confirmada por el equipo comercial. Los lotes que no figuran aquí
+    // están reservados o vendidos y se muestran como "No disponible".
+    const AVAILABLE_LOT = [6, 7, 9, 11, 14];          // disponibles sin casa
+    const WITH_HOUSE = [8, 10, 15, 16, 18, 19];       // disponibles con casa
+
+    // Lotes de la Etapa I según el cuadro de áreas del plano oficial (levantamiento 09/08/2024).
+    // x/y: centro del rótulo del lote, en píxeles sobre el plano de 2000 × 1415.
+    const PLAN_SIZE = { w: 2000, h: 1415 };
+    const LOT_DATA = [
+      [1, 488.58, 1160, 1045], [2, 404.98, 1135, 965],  [3, 418.70, 1230, 885],  [4, 404.98, 1095, 910],
+      [5, 489.44, 1205, 820],  [6, 508.69, 1155, 755],  [7, 405.09, 1045, 835],  [8, 404.84, 1005, 780],
+      [9, 475.59, 1120, 690],  [10, 405.56, 945, 700],  [11, 457.36, 1085, 650], [12, 405.47, 910, 640],
+      [13, 1404.45, 1050, 580], [14, 405.66, 870, 585], [15, 405.61, 830, 530],  [16, 630.41, 960, 440],
+      [17, 405.86, 780, 445],  [18, 459.37, 850, 370],  [19, 628.85, 940, 325],  [20, 496.65, 725, 400],
+      [21, 405.86, 685, 315],  [22, 459.37, 795, 290],  [23, 563.72, 880, 235],
+    ];
+    const LOTS = LOT_DATA.map(([id, area, x, y]) => ({
+      id,
+      name: `Lote ${id}`,
+      area,
+      status: WITH_HOUSE.includes(id) ? 'Lote con casa'
+        : AVAILABLE_LOT.includes(id) ? 'Lote disponible'
+        : 'No disponible',
+      left: (x / PLAN_SIZE.w) * 100,
+      top: (y / PLAN_SIZE.h) * 100,
+    }));
+    const formatArea = (m2) => `${m2.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} m²`;
+
+    function showTooltip(marker, lot) {
+      tooltip.querySelector('[data-lot-name]').textContent = lot.name;
+      tooltip.querySelector('[data-lot-area]').textContent = formatArea(lot.area);
+      const status = tooltip.querySelector('[data-lot-status]');
+      status.textContent = LOT_STATUS[lot.status].available ? `${lot.status} · Clic para cotizar` : lot.status;
+      status.style.color = LOT_STATUS[lot.status].color;
+
+      const m = marker.getBoundingClientRect();
+      const c = map.getBoundingClientRect();
+      tooltip.style.left = `${m.left - c.left + m.width / 2}px`;
+      // Arriba del lote; si no cabe, debajo
+      const above = m.top - c.top > 64;
+      tooltip.style.top = above ? `${m.top - c.top - 10}px` : `${m.bottom - c.top + 10}px`;
+      tooltip.style.transform = `translate(-50%, ${above ? '-100%' : '0'})`;
+      tooltip.classList.replace('opacity-0', 'opacity-100');
+      // Brillo sobre el lote que se explora
+      marker.classList.add('animate-lotglow', 'scale-110', 'z-20');
+    }
+    function hideTooltip(marker) {
+      tooltip.classList.replace('opacity-100', 'opacity-0');
+      marker.classList.remove('animate-lotglow', 'scale-110', 'z-20');
+    }
+
+    LOTS.forEach((lot) => {
+      const available = LOT_STATUS[lot.status].available === true;
+      const marker = document.createElement('button');
+      marker.type = 'button';
+      marker.textContent = lot.id;
+      marker.dataset.lot = lot.id;
+      marker.setAttribute('aria-label', `${lot.name}, ${formatArea(lot.area)}: ${lot.status}`);
+      if (!available) marker.setAttribute('aria-disabled', 'true');
+      marker.className = `absolute z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 text-[11px] font-bold transition-all duration-300 ease-out focus:outline-none lg:h-9 lg:w-9 lg:text-sm ${LOT_STATUS[lot.status].classes}`;
+      marker.style.top = `${lot.top}%`;
+      marker.style.left = `${lot.left}%`;
+
+      marker.addEventListener('mouseenter', () => showTooltip(marker, lot));
+      marker.addEventListener('focus', () => showTooltip(marker, lot));
+      marker.addEventListener('mouseleave', () => hideTooltip(marker));
+      marker.addEventListener('blur', () => hideTooltip(marker));
+      marker.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!available) return;
+        const what = lot.status === 'Lote con casa' ? `el Lote ${lot.id} con casa` : `el Lote ${lot.id}`;
+        const text = `Hola, me interesa iniciar la planificación de mi retiro y conocer más detalles sobre ${what} en Avista Beach.`;
+        const origen = lot.status === 'Lote con casa' ? `Lote ${lot.id} (con casa)` : `Lote ${lot.id}`;
+        openConsent(text, origen, marker);
+      });
+
+      map.appendChild(marker);
+    });
+
+    // En pantallas estrechas, arrancar el plano centrado en los lotes
+    const planScroll = document.getElementById('masterplan-scroll');
+    planScroll.scrollLeft = (planScroll.scrollWidth - planScroll.clientWidth) * 0.48;
+
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      el.textContent = `(${LOTS.filter((l) => l.status === el.dataset.count).length})`;
+    });
+  </script>
+</body>
+</html>
