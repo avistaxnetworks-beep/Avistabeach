@@ -110,6 +110,50 @@
       .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+
+  <!-- Píxeles de rastreo desactivados hasta recibir los IDs definitivos.
+  Google Analytics
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ID_PENDIENTE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ID_PENDIENTE');
+  </script>
+
+  Meta Pixel
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'META_ID_PENDIENTE');
+    fbq('track', 'PageView');
+  </script>
+
+  TikTok Pixel
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;
+      var ttq=w[t]=w[t]||[];
+      ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+      for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+      ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
+        ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;
+        ttq._o=ttq._o||{};ttq._o[e]=n||{};var i=d.createElement("script");i.type="text/javascript";
+        i.async=!0;i.src=r+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(i,a)};
+      ttq.load('TIKTOK_ID_PENDIENTE');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  -->
 </head>
 
 <body class="bg-dawn-50 font-sans text-slate-800 antialiased">
@@ -128,9 +172,8 @@
         <li><a href="#villas" class="nav-link">Villas</a></li>
         <li><a href="#avances" class="nav-link">Avances</a></li>
         <li><a href="#masterplan" class="nav-link">Master Plan</a></li>
-        <li><a href="#inversion" class="nav-link">Inversión</a></li>
         <li>
-          <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Navbar · Contactar" aria-haspopup="dialog" class="btn-sun px-5 py-2.5 text-sm">Contactar</a>
+          <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort. [Ref:NAV-01]" data-origen="Navbar · Contactar" aria-haspopup="dialog" class="btn-sun px-5 py-2.5 text-sm">Contactar</a>
         </li>
       </ul>
 
@@ -146,8 +189,7 @@
       <a href="#villas" class="block py-3 text-slate-800">Villas</a>
       <a href="#avances" class="block py-3 text-slate-800">Avances</a>
       <a href="#masterplan" class="block py-3 text-slate-800">Master Plan</a>
-      <a href="#inversion" class="block py-3 text-slate-800">Inversión</a>
-      <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Menú móvil · Contactar" aria-haspopup="dialog" class="btn-sun mt-3 w-full py-3">Contactar</a>
+      <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort. [Ref:NAV-02]" data-origen="Menú móvil · Contactar" aria-haspopup="dialog" class="btn-sun mt-3 w-full py-3">Contactar</a>
     </div>
   </header>
 
@@ -176,12 +218,13 @@
           Un retiro para respirar despacio, desconectarte por completo y volver a lo esencial.
         </p>
         <div class="mt-12 flex animate-fade flex-col items-center justify-center gap-4 [animation-delay:700ms] sm:flex-row">
-          <a href="#" data-wa="Hola, quiero separar mi lote en la preventa de Avista Beach Villas & Resort." data-origen="Hero · Reserva tu lote" aria-haspopup="dialog" class="btn-sun px-8 py-4 text-base sm:text-lg">
+          <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, vengo del anuncio y quiero información de las villas. [Ref:HERO-01]" data-origen="Hero · Reserva tu lote" aria-haspopup="dialog" class="btn-sun px-8 py-4 text-base sm:text-lg">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
             Reserva tu lote por WhatsApp
           </a>
           <a href="#villas" class="btn-glass px-8 py-4">Conocer las villas</a>
         </div>
+
       </div>
 
       <a href="#experiencia" class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/80" aria-label="Bajar a la siguiente sección">
@@ -320,7 +363,7 @@
                 <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-waves"/></svg>Piscina privada</li>
                 <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 120 m²</li>
               </ul>
-              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Palma en Avista Beach Villas & Resort." data-origen="Villa Palma · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+              <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, me interesa conocer los precios de los modelos de villas. [Ref:VILLAS-02] Quisiera información sobre Villa Palma." data-origen="Villa Palma · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
                 Ver detalles
                 <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
@@ -347,7 +390,7 @@
                 <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-leaf"/></svg>Acceso directo a senderos</li>
                 <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 210 m²</li>
               </ul>
-              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Coral en Avista Beach Villas & Resort." data-origen="Villa Coral · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+              <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, me interesa conocer los precios de los modelos de villas. [Ref:VILLAS-03] Quisiera información sobre Villa Coral." data-origen="Villa Coral · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
                 Ver detalles
                 <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
@@ -374,13 +417,16 @@
                 <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wind"/></svg>Integración total con la brisa marina</li>
                 <li class="flex items-start gap-2.5 font-semibold"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sun-dark" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-area"/></svg>Área: 180 m²</li>
               </ul>
-              <a href="#" data-wa="Hola, quiero ver los detalles de la Villa Arena en Avista Beach Villas & Resort." data-origen="Villa Arena · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
+              <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, me interesa conocer los precios de los modelos de villas. [Ref:VILLAS-04] Quisiera información sobre Villa Arena." data-origen="Villa Arena · Ver detalles" aria-haspopup="dialog" class="btn-sun mt-9 px-7 py-3 text-sm">
                 Ver detalles
                 <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
             </div>
           </article>
         </div>
+        <p class="mt-10 text-center text-xs leading-relaxed text-slate-800/60">
+          *Financiación directa con Constructora Inversiones Morales. Tasa Efectiva Anual (TEA) aplicable: 12%. Sujeto a estudio de crédito.
+        </p>
       </div>
     </section>
 
@@ -432,7 +478,7 @@
         </div>
 
         <div class="reveal mt-12 text-center">
-          <a href="#" data-wa="Hola, quiero agendar una visita para conocer los avances de obra de Avista Beach Villas & Resort." data-origen="Avances · Agenda una visita" aria-haspopup="dialog" class="btn-sun px-8 py-3.5 text-sm sm:text-base">
+          <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, quiero agendar una visita para conocer los avances de obra de Avista Beach Villas & Resort. [Ref:AVANCES-05]" data-origen="Avances · Agenda una visita" aria-haspopup="dialog" class="btn-sun px-8 py-3.5 text-sm sm:text-base">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
             Agenda una visita al proyecto
           </a>
@@ -483,96 +529,8 @@
           <a href="assets/masterplan-avista-etapa1.webp" target="_blank" rel="noopener" class="ml-1 font-medium text-sun-deep underline underline-offset-2 hover:text-slate-900">Ver plano completo</a></p>
       </div>
 
-      <!-- Transición del atardecer a la noche -->
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#5B4470]/45 to-rwaxi-night" aria-hidden="true"></div>
     </section>
 
-    <!-- ================= 6. INVERSIÓN TOKENIZADA (RWAXI) ================= -->
-    <section id="inversion" class="relative overflow-hidden bg-gradient-to-br from-rwaxi-night via-rwaxi-purple to-[#0B2347] py-28 text-white sm:py-36">
-      <!-- Red blockchain: nodos interconectados -->
-      <svg class="pointer-events-none absolute inset-0 h-full w-full opacity-20" aria-hidden="true">
-        <defs>
-          <pattern id="chain-net" width="220" height="180" patternUnits="userSpaceOnUse">
-            <g stroke="#24B8D7" stroke-width="1" fill="none">
-              <path d="M20 30 L110 15 L190 60 L150 140 L60 120 Z"/>
-              <path d="M20 30 L60 120 M110 15 L150 140 M110 15 L60 120 M190 60 L60 120"/>
-              <path d="M190 60 L240 40 M150 140 L170 200 M60 120 L0 160 M20 30 L-20 10"/>
-            </g>
-            <g fill="#1A0B38" stroke="#24B8D7" stroke-width="1.5">
-              <rect x="14" y="24" width="12" height="12" rx="2"/>
-              <rect x="104" y="9" width="12" height="12" rx="2"/>
-              <rect x="184" y="54" width="12" height="12" rx="2"/>
-              <rect x="144" y="134" width="12" height="12" rx="2"/>
-              <rect x="54" y="114" width="12" height="12" rx="2"/>
-            </g>
-            <g fill="#B77A1E"><circle cx="65" cy="22" r="2.5"/><circle cx="150" cy="38" r="2.5"/><circle cx="105" cy="130" r="2.5"/><circle cx="40" cy="75" r="2.5"/></g>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#chain-net)"/>
-      </svg>
-      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#1A0B38_90%)]" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-32 top-0 h-96 w-96 animate-node rounded-full bg-rwaxi/20 blur-[120px]" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-20 bottom-0 h-[28rem] w-[28rem] animate-node rounded-full bg-rwaxi-blue/40 blur-[120px] [animation-delay:3s]" aria-hidden="true"></div>
-
-      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div class="reveal text-center lg:text-left">
-        <!-- Logo oficial sobre fondo limpio (manual de marca: no recolorear ni añadir efectos) -->
-        <div class="inline-flex rounded-2xl bg-white px-5 py-3 shadow-[0_12px_40px_-8px_rgba(36,184,215,0.35)]">
-          <img src="assets/logo-rwaxi.png" alt="RWAXI · Activos reales, inversiones digitales" class="h-16 w-auto sm:h-20" loading="lazy" />
-        </div>
-        <p class="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-rwaxi">Tecnología blockchain · RWAXI Real Estate</p>
-        <h2 class="mt-3 text-4xl font-semibold leading-tight !text-white sm:text-5xl lg:text-6xl">
-          Inversión Tokenizada con <span class="text-rwaxi">RWAXI</span>
-        </h2>
-        <p class="mx-auto mt-7 max-w-2xl lg:mx-0 text-lg leading-relaxed text-white/75 sm:text-xl">
-          Sé copropietario del edificio principal del resort mediante nuestro modelo de tokenización inmobiliaria.
-          Participaciones seguras y respaldadas desde
-        </p>
-        <p class="mt-4 font-serif text-5xl font-semibold text-white drop-shadow-[0_0_24px_rgba(36,184,215,0.45)] sm:text-6xl">$75.000.000 COP</p>
-
-        <div class="mt-12 flex flex-col items-center gap-4 lg:items-start">
-          <a href="https://www.rwaxirealestate.com" target="_blank" rel="noopener noreferrer" class="btn-sun px-9 py-4 text-base shadow-glow-lg sm:text-lg">
-            Visitar RWAXI Real Estate
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
-          </a>
-          <p class="text-xs text-white/45">Sujeto a condiciones y documentación legal del proyecto.</p>
-        </div>
-        </div>
-
-        <!-- Edificio principal (activo tokenizado): carrusel de renders -->
-        <figure id="edificio-carousel" class="reveal relative [transition-delay:150ms]" aria-roledescription="carrusel" aria-label="Renders del edificio principal del resort">
-          <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-rwaxi/30 via-transparent to-rwaxi-blue/30 blur-xl" aria-hidden="true"></div>
-          <div class="relative overflow-hidden rounded-[1.75rem] border border-rwaxi/30 shadow-[0_0_40px_rgba(36,184,215,0.2)]">
-            <div class="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-white py-1.5 pl-1.5 pr-4 shadow-lg">
-              <img src="assets/isotipo-rwaxi.png" alt="" class="h-8 w-8 object-contain" />
-              <span class="text-xs font-semibold text-rwaxi-purple">Activo tokenizado</span>
-            </div>
-
-            <div class="relative aspect-[4/3] w-full sm:aspect-[16/10]">
-              <img data-slide data-caption="Vista desde la laguna" src="assets/render-edificio-principal.webp"
-                   alt="Render del edificio principal de Avista Beach frente a la laguna al atardecer"
-                   class="carousel-slide absolute inset-0 h-full w-full object-cover opacity-100" />
-              <img data-slide data-caption="Fachada con vista al mar" src="assets/render-edificio-fachada-mar.webp"
-                   alt="Render de la fachada del edificio principal con balcones y el mar Caribe al atardecer"
-                   class="carousel-slide absolute inset-0 h-full w-full object-cover opacity-0" loading="lazy" />
-            </div>
-
-            <figcaption class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-slate-900/90 to-transparent px-5 pb-4 pt-12 text-xs">
-              <span>
-                <span data-slide-caption class="block font-medium text-white" aria-live="polite">Vista desde la laguna</span>
-                <span class="mt-0.5 block uppercase tracking-wider text-white/50">Render ilustrativo</span>
-              </span>
-              <span class="flex items-center gap-2" role="group" aria-label="Elegir imagen">
-                <button type="button" data-dot="0" aria-label="Ver vista desde la laguna" aria-current="true"
-                        class="h-2 w-6 rounded-full bg-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rwaxi"></button>
-                <button type="button" data-dot="1" aria-label="Ver fachada con vista al mar"
-                        class="h-2 w-2 rounded-full bg-white/50 transition-all duration-500 hover:bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-rwaxi"></button>
-              </span>
-            </figcaption>
-          </div>
-        </figure>
-      </div>
-    </section>
   </main>
 
   <!-- ================= 7. FOOTER INSTITUCIONAL ================= -->
@@ -601,9 +559,8 @@
             <li><a href="#villas" class="nav-link">Villas</a></li>
             <li><a href="#avances" class="nav-link">Avances</a></li>
             <li><a href="#masterplan" class="nav-link">Master Plan</a></li>
-            <li><a href="#inversion" class="nav-link">Inversión</a></li>
           </ul>
-          <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Footer · Hablar con un asesor" aria-haspopup="dialog" class="btn-sun mt-6 px-6 py-2.5 text-sm">
+          <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort. [Ref:FOOTER-06]" data-origen="Footer · Hablar con un asesor" aria-haspopup="dialog" class="btn-sun mt-6 px-6 py-2.5 text-sm">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
             Hablar con un asesor
           </a>
@@ -614,9 +571,9 @@
     <div class="border-t border-white/10 py-6 text-center text-xs text-white/40">
       © <span id="year"></span> Avista Beach Villas &amp; Resort. Todos los derechos reservados. Imágenes de referencia sujetas a cambios.
       <nav aria-label="Documentos legales" class="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2">
-        <a href="#" data-legal="terminos" class="nav-link underline-offset-2 hover:underline">Términos y Condiciones</a>
-        <a href="#" data-legal="datos" class="nav-link underline-offset-2 hover:underline">Política de Tratamiento de Datos</a>
-        <a href="#" data-legal="cookies" class="nav-link underline-offset-2 hover:underline">Política de Cookies</a>
+        <a href="terminos.html" data-legal="terminos" class="nav-link underline-offset-2 hover:underline">Términos y Condiciones</a>
+        <a href="datos.html" data-legal="datos" class="nav-link underline-offset-2 hover:underline">Política de Tratamiento de Datos</a>
+        <a href="cookies.html" data-legal="cookies" class="nav-link underline-offset-2 hover:underline">Política de Cookies</a>
       </nav>
     </div>
   </footer>
@@ -627,7 +584,7 @@
     <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
       <p class="max-w-3xl text-sm leading-relaxed text-white/80">
         Usamos cookies y almacenamiento local para recordar tus preferencias y mejorar tu experiencia en el sitio.
-        Consulta nuestra <a href="#" data-legal="cookies" class="font-medium text-sun underline underline-offset-2 hover:text-white">Política de Cookies</a>.
+        Consulta nuestra <a href="cookies.html" data-legal="cookies" class="font-medium text-sun underline underline-offset-2 hover:text-white">Política de Cookies</a>.
       </p>
       <button type="button" id="cookie-accept" class="btn-sun shrink-0 px-6 py-2.5 text-sm">Aceptar Cookies</button>
     </div>
@@ -663,15 +620,15 @@
           <legend class="sr-only">Autorizaciones obligatorias</legend>
           <label for="consent-terminos" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
             <input id="consent-terminos" name="acepta_terminos" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
-            <span>Acepto los <a href="#" data-legal="terminos" target="_blank" rel="noopener" class="text-blue-600 underline">Términos y Condiciones</a>.</span>
+            <span>Acepto los <a href="terminos.html" data-legal="terminos" target="_blank" rel="noopener" class="text-blue-600 underline">Términos y Condiciones</a>.</span>
           </label>
           <label for="consent-datos" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
             <input id="consent-datos" name="acepta_datos" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
-            <span>Acepto la <a href="#" data-legal="datos" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Tratamiento de Datos</a>.</span>
+            <span>Acepto la <a href="datos.html" data-legal="datos" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Tratamiento de Datos</a>.</span>
           </label>
           <label for="consent-cookies" class="flex cursor-pointer items-start gap-3 text-sm leading-snug text-slate-800">
             <input id="consent-cookies" name="acepta_cookies" type="checkbox" required class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#C99A3E]" />
-            <span>Acepto la <a href="#" data-legal="cookies" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Cookies</a>.</span>
+            <span>Acepto la <a href="cookies.html" data-legal="cookies" target="_blank" rel="noopener" class="text-blue-600 underline">Política de Cookies</a>.</span>
           </label>
         </fieldset>
 
@@ -686,7 +643,7 @@
   </div>
 
   <!-- ================= BOTÓN FLOTANTE WHATSAPP ================= -->
-  <a href="#" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort." data-origen="Botón flotante WhatsApp" aria-haspopup="dialog" id="wa-float" aria-label="Escríbenos por WhatsApp"
+  <a href="https://api.whatsapp.com/send?phone=14074471422" data-wa="Hola, quiero información sobre la preventa de Avista Beach Villas & Resort. [Ref:FLOAT-07]" data-origen="Botón flotante WhatsApp" aria-haspopup="dialog" id="wa-float" aria-label="Escríbenos por WhatsApp"
      class="fixed bottom-4 right-4 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/30 transition hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40">
     <span class="absolute inset-0 animate-ring rounded-full bg-[#25D366]" aria-hidden="true"></span>
     <svg class="relative h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"/></svg>
@@ -716,7 +673,7 @@
   <script>
     // ===== Configuración =====
     // Reemplaza por el número real en formato internacional, sin "+" ni espacios (ej. 573001234567).
-    const WHATSAPP_NUMBER = "573018048806";
+    const WHATSAPP_NUMBER = "14074471422";
 
     // Webhook de Make/Zapier donde se registran los consentimientos. Vacío = no se envía nada.
     const WEBHOOK_URL = "";
@@ -724,7 +681,7 @@
     const LEGAL_LINKS = { terminos: 'terminos.html', datos: 'datos.html', cookies: 'cookies.html' };
     const POLICY_VERSION = 'v1.0-Oct2026';
 
-    const waLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    const waLink = (text) => `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`;
 
     // localStorage puede no estar disponible (modo privado, bloqueo de datos)
     const storage = {
@@ -853,6 +810,7 @@
 
     // Todos los CTA de WhatsApp pasan por el modal
     document.querySelectorAll('[data-wa]').forEach((el) => {
+      el.href = waLink(el.dataset.wa);
       el.addEventListener('click', (e) => {
         e.preventDefault();
         openConsent(el.dataset.wa, el.dataset.origen, el);
@@ -905,51 +863,6 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-
-    // ===== Carrusel del edificio principal =====
-    (() => {
-      const root = document.getElementById('edificio-carousel');
-      const slides = [...root.querySelectorAll('[data-slide]')];
-      const dots = [...root.querySelectorAll('[data-dot]')];
-      const caption = root.querySelector('[data-slide-caption]');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const INTERVAL = 5500;
-      let current = 0;
-      let timer = null;
-
-      function show(index) {
-        current = (index + slides.length) % slides.length;
-        slides.forEach((img, i) => {
-          const active = i === current;
-          img.classList.toggle('opacity-100', active);
-          img.classList.toggle('opacity-0', !active);
-          // Acercamiento lento sobre la imagen activa
-          img.classList.toggle('scale-105', active && !reduceMotion);
-          img.setAttribute('aria-hidden', String(!active));
-        });
-        dots.forEach((dot, i) => {
-          const active = i === current;
-          dot.classList.toggle('w-6', active);
-          dot.classList.toggle('bg-white', active);
-          dot.classList.toggle('w-2', !active);
-          dot.classList.toggle('bg-white/50', !active);
-          if (active) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current');
-        });
-        caption.textContent = slides[current].dataset.caption;
-      }
-      const start = () => { if (!reduceMotion && !timer) timer = setInterval(() => show(current + 1), INTERVAL); };
-      const stop = () => { clearInterval(timer); timer = null; };
-
-      dots.forEach((dot) => dot.addEventListener('click', () => { show(Number(dot.dataset.dot)); stop(); start(); }));
-      root.addEventListener('mouseenter', stop);
-      root.addEventListener('mouseleave', start);
-      root.addEventListener('focusin', stop);
-      root.addEventListener('focusout', start);
-      document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-
-      show(0);
-      start();
-    })();
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1034,7 +947,7 @@
         e.preventDefault();
         if (!available) return;
         const what = lot.status === 'Lote con casa' ? `el Lote ${lot.id} con casa` : `el Lote ${lot.id}`;
-        const text = `Hola, me interesa iniciar la planificación de mi retiro y conocer más detalles sobre ${what} en Avista Beach.`;
+        const text = `Hola, quiero saber qué lotes quedan disponibles. [Ref:MASTERPLAN-03] Me interesa ${what} en Avista Beach.`;
         const origen = lot.status === 'Lote con casa' ? `Lote ${lot.id} (con casa)` : `Lote ${lot.id}`;
         openConsent(text, origen, marker);
       });
