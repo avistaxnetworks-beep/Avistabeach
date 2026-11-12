@@ -17,6 +17,7 @@
 
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Load Meta Pixel only after cookie consent; a noscript beacon cannot honor this site's stored consent. -->
   <script>
     tailwind.config = {
       theme: {
@@ -111,7 +112,28 @@
     }
   </style>
 
-  <!-- Píxeles de rastreo desactivados hasta recibir los IDs definitivos.
+  <script>
+    const META_PIXEL_ID = '1333796482121830';
+
+    window.avistaActivateMetaPixel = function () {
+      if (window.avistaMetaPixelActive) return;
+      window.avistaMetaPixelActive = true;
+
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', META_PIXEL_ID);
+      fbq('track', 'PageView');
+      document.dispatchEvent(new Event('avista:meta-pixel-ready'));
+    };
+  </script>
+
+  <!-- Google Analytics and TikTok remain disabled until their IDs are provided.
   Google Analytics
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ID_PENDIENTE"></script>
   <script>
@@ -119,20 +141,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-ID_PENDIENTE');
-  </script>
-
-  Meta Pixel
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'META_ID_PENDIENTE');
-    fbq('track', 'PageView');
   </script>
 
   TikTok Pixel
@@ -574,7 +582,7 @@
               Estamos preparando novedades sobre el edificio principal del resort. Déjanos tus datos para recibir información cuando se acerque el lanzamiento.
             </p>
             <div class="mt-10 flex flex-col items-center gap-4 lg:items-start">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxWKOng9KEjdKrxHby-JW958Vrzz2HIXhps6GurIwKJ1Vfhg/viewform?usp=preview" target="_blank" rel="noopener noreferrer" class="btn-sun px-9 py-4 text-base shadow-glow-lg sm:text-lg">
+              <a id="meta-lead-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfxWKOng9KEjdKrxHby-JW958Vrzz2HIXhps6GurIwKJ1Vfhg/viewform?usp=preview" target="_blank" rel="noopener noreferrer" class="btn-sun px-9 py-4 text-base shadow-glow-lg sm:text-lg">
                 Me interesa - Llenar formulario
               </a>
             </div>
@@ -666,7 +674,7 @@
     <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
       <p class="max-w-3xl text-sm leading-relaxed text-white/80">
         Usamos cookies y almacenamiento local para recordar tus preferencias y mejorar tu experiencia en el sitio.
-        Consulta nuestra <a href="cookies.html" data-legal="cookies" class="font-medium text-sun underline underline-offset-2 hover:text-white">Política de Cookies</a>.
+        Si aceptas, activaremos Meta Pixel para medir el rendimiento de nuestras campañas. Consulta la <a href="cookies.html" data-legal="cookies" class="font-medium text-sun underline underline-offset-2 hover:text-white">Política de Cookies</a>.
       </p>
       <button type="button" id="cookie-accept" class="btn-sun shrink-0 px-6 py-2.5 text-sm">Aceptar Cookies</button>
     </div>
@@ -761,7 +769,7 @@
     const WEBHOOK_URL = "";
     // Documentos legales y versión vigente (se registra con cada consentimiento)
     const LEGAL_LINKS = { terminos: 'terminos.html', datos: 'datos.html', cookies: 'cookies.html' };
-    const POLICY_VERSION = 'v1.0-Oct2026';
+    const POLICY_VERSION = 'v1.1-Nov2026';
 
     const waLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
@@ -780,9 +788,29 @@
     });
 
     // ===== Banner de cookies =====
-    const COOKIE_KEY = 'avista_cookies_aceptadas';
+    const COOKIE_KEY = 'avista_cookies_aceptadas_v1_1';
     const cookieBanner = document.getElementById('cookie-banner');
     const waFloat = document.getElementById('wa-float');
+
+    function trackMetaEvent(eventName, parameters = {}) {
+      if (!window.avistaMetaPixelActive || typeof window.fbq !== 'function') return;
+      window.fbq('track', eventName, parameters);
+    }
+
+    function observeMetaViewContent() {
+      if (!('IntersectionObserver' in window)) return;
+      const sections = document.querySelectorAll('#villas, #avances, #masterplan, #inversion');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          trackMetaEvent('ViewContent', { content_name: entry.target.id });
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.3 });
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    document.addEventListener('avista:meta-pixel-ready', observeMetaViewContent, { once: true });
 
     // Mientras el banner está visible, el botón flotante sube por encima de él;
     // en móvil se oculta para no tapar el contenido (el banner ocupa más alto)
@@ -793,11 +821,13 @@
       waFloat.classList.toggle('hidden', visible && narrow);
     }
     if (!storage.get(COOKIE_KEY)) cookieBanner.classList.remove('hidden');
+    else window.avistaActivateMetaPixel();
     placeFloatButton();
     window.addEventListener('resize', placeFloatButton);
     document.getElementById('cookie-accept').addEventListener('click', () => {
       storage.set(COOKIE_KEY, new Date().toISOString());
       cookieBanner.classList.add('hidden');
+      window.avistaActivateMetaPixel();
       placeFloatButton();
     });
 
@@ -895,8 +925,13 @@
       el.href = waLink(el.dataset.wa);
       el.addEventListener('click', (e) => {
         e.preventDefault();
+        trackMetaEvent('Contact', { content_name: 'whatsapp' });
         openConsent(el.dataset.wa, el.dataset.origen, el);
       });
+    });
+
+    document.getElementById('meta-lead-cta').addEventListener('click', () => {
+      trackMetaEvent('Lead');
     });
 
     // ===== Navbar: transparente -> sólido con el scroll =====
@@ -1074,6 +1109,7 @@
       marker.addEventListener('click', (e) => {
         e.preventDefault();
         if (!available) return;
+        trackMetaEvent('Contact', { content_name: 'whatsapp' });
         const what = lot.status === 'Lote con casa' ? `el Lote ${lot.id} con casa` : `el Lote ${lot.id}`;
         const text = `Hola, quiero saber qué lotes quedan disponibles. [Ref:MASTERPLAN-03] Me interesa ${what} en Avista Beach.`;
         const origen = lot.status === 'Lote con casa' ? `Lote ${lot.id} (con casa)` : `Lote ${lot.id}`;
